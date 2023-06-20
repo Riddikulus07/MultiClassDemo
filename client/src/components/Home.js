@@ -14,16 +14,17 @@ function Home() {
         localStorage.setItem('id', id);
         localStorage.setItem('city', city);
         localStorage.setItem('area', area);
+        localStorage.setItem('Manager', Manager);
     }
   
     // Deleted function - functionality 
-    // for deleting the entry
+    // for deleting the entry made in the Home page
     function deleted(id) {
   
         var index = array.map(function (e) { 
             return e.id; }).indexOf(id);
   
-        // deleting the entry with index
+        // deleting the entry with array index
         array.splice(index, 1)
   
         // We need to re-render the page for getting 
@@ -38,6 +39,8 @@ function Home() {
                     <tr>
                         <th>city</th>
                         <th>area</th>
+                        <th>id</th>
+                        <th>Manager</th>
                         </tr>
                 </thead>
                 <tbody>
@@ -50,14 +53,16 @@ function Home() {
                             <tr>
                                 <td>{item.city}</td>
                                 <td>{item.area}</td>
+                                <td>{item.id}</td>
+                                <td>{item.Manager}</td>
   
-                                {/* getting theid,name, and 
-                                    age for storing these
+                                {/* getting theid,city, area and 
+                                    Manager for storing these
                                     value in the jsx with 
                                     onclick event */}
                                 <td><Link to={`/edit`}>
                                     <Button onClick={(e) =>
-                                    setID(item.id, item.city, item.area)} 
+                                    setID(item.id, item.city, item.area,item.Manager)} 
                                     variant="info">
                                     Update</Button></Link>
                                 </td>
