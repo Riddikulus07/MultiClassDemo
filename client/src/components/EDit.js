@@ -27,7 +27,7 @@ function Edit() {
     const handelSubmit = (e) => {
   
         // Preventing from reload
-  
+
         e.preventDEfault();
       
   
@@ -81,10 +81,11 @@ return (
             {/* Hadinling an onclick event 
                 running an edit logic */}
                                 <Button
-                    onClick={e => handelSubmit(e)}
+                    onClick={e => handelSubmit(e) 
                     variant="primary" type="submit" size="lg">
                     Update
                 </Button>
+
   
                 {/* Redirecting to main page after editing */}
                 <Link className="d-grid gap-2" to='/'>
