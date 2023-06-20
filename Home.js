@@ -12,8 +12,8 @@ function Home() {
     // using react-context api or redux
     function setID(id, name, age) {
         localStorage.setItem('id', id);
-        localStorage.setItem('Name', name);
-        localStorage.setItem('Age', age);
+        localStorage.setItem('city', city);
+        localStorage.setItem('area', area);
     }
   
     // Deleted function - functionality 
@@ -36,8 +36,8 @@ function Home() {
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Age</th>
+                        <th>city</th>
+                        <th>area</th>
                         </tr>
                 </thead>
                 <tbody>
@@ -48,8 +48,8 @@ function Home() {
                     {array.map((item) => {
                         return (
                             <tr>
-                                <td>{item.Name}</td>
-                                <td>{item.Age}</td>
+                                <td>{item.city}</td>
+                                <td>{item.area}</td>
   
                                 {/* getting theid,name, and 
                                     age for storing these
@@ -57,7 +57,7 @@ function Home() {
                                     onclick event */}
                                 <td><Link to={`/edit`}>
                                     <Button onClick={(e) =>
-                                    setID(item.id, item.Name, item.Age)} 
+                                    setID(item.id, item.city, item.area)} 
                                     variant="info">
                                     Update</Button></Link>
                                 </td>
