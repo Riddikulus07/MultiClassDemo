@@ -67,7 +67,7 @@ return (
                 controlId="formBasicEmail">
                 <Form.Control value={name}
                     onChange={e => setname(e.target.value)}
-                    type="text" placeholder="Enter Name" />
+                    type="text" placeholder="Enter your Name" />
             </Form.Group>
 
             {/* setting a age from the input textfiled */}
@@ -83,7 +83,7 @@ return (
                                 <Button
                     onClick={e => handelSubmit(e) 
                     variant="primary" type="submit" size="lg">
-                    Update
+                    update
                 </Button>
 
   
