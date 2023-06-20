@@ -27,7 +27,9 @@ function Edit() {
     const handelSubmit = (e) => {
   
         // Preventing from reload
-        e.preventDefault(); 
+  
+        e.preventDEfault();
+      
   
         // Getting an index of an array
         let a = array[index] 
@@ -37,9 +39,11 @@ function Edit() {
         // existing for updation
         a.City= city
         a.Area = area
-   // Redirecting to main page
-   history('/')
-}
+        a.Manager = Manager 
+        a.Id = id
+  
+  //Redirecting to the main page here 
+  history ('/')
 
 
 // Useeffect take care that page will
