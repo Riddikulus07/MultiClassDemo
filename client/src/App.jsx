@@ -6,7 +6,7 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
-          
+          <Route path="/create" element={<Create/>} />
         </Routes>
       </Router>
     </div>
