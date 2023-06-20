@@ -8,6 +8,13 @@ class BranchDetailsClient
     area;
     numemployees;
     manager;
+    BranchDetailsClient()
+    {
+        city = '';
+        area ='';
+        this.numemployees = 0;
+        manager = '';
+    }
 }
 
 
@@ -18,9 +25,12 @@ function Create()
     
     const handleBranchChange = (event) =>
     {
-    const [ name,value] = event.target;
-    setBranch = (prev) =>
+        console.log(branch);
+    const {name,value} = event.target;
+    
+    setBranch (prev =>
     {
+        
         if(name === 'BranchCity')
         {
             return {
@@ -57,12 +67,29 @@ function Create()
                 manager : value
             }
         }
+    });
     }
-    }
-    const handleNewBranch= (event) =>
-    {
-
-    }
+    const handleNewBranch=  async (e) => {
+            e.preventDefault();
+            
+            try {
+              const response = await fetch('http://localhost:8100/data-provider/v1/branch', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(branch),
+              });
+              if (response.ok) {
+                console.log('Object posted successfully');
+              } else {
+                console.log('Object posting failed');
+                console.log(response);
+              }
+            } catch (error) {
+              console.error('Error occurred while posting object:', error);
+            }
+          };
     return (
         <div className='d-flex justify-content-center  ' >
         <div className = 'card cardview text-center' > 
