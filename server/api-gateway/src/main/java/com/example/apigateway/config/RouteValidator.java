@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.function.Predicate;
 
-@Component
+//@Component
 public class RouteValidator {
     public static final List<String> openApiEndpoints = List.of(
             "/authentication-service/v1/register",

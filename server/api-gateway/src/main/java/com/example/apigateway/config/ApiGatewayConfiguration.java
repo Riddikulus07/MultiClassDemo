@@ -16,21 +16,10 @@ public class ApiGatewayConfiguration {
     private AuthenticationFilter authenticationFilter;
     @Bean
     public RouteLocator gatewayRouter(RouteLocatorBuilder builder){
-        GatewayFilter authFilter = authenticationFilter.apply(new AuthenticationFilter.Config());
         return builder.routes()
                 .route(
                         p -> p.path("/data-provider/**")
-                                .filters(spec -> spec.filter(authFilter))
                                 .uri("lb://data-provider")
-                )
-                .route(
-                        p -> p.path("/scores-service/**")
-                                .filters(spec -> spec.filter(authFilter))
-                                .uri("lb://scores-service")
-                )
-                .route(
-                        p -> p.path("/authentication-service/**")
-                                .uri("lb://authentication-service")
                 )
                 .build();
     }
