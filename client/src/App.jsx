@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter as Router}from 'react-router-dom'
+import Create from './create';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
