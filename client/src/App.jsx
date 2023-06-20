@@ -1,4 +1,3 @@
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import { Routes, Route } from 'react-router-dom';
@@ -6,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import Create from './create';
 
 function App() {
-  // const [count, setCount] = useState(0)
+  // const [count, setCount] = useSate(0)
 
   return (
 
@@ -19,8 +18,6 @@ function App() {
       </Routes>
       </BrowserRouter>
       </div>
-        
-  )
-}
-
-export default App
+  );   
+  }
+export default App;
