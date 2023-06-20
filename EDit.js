@@ -10,9 +10,10 @@ function Edit() {
   
     // Here usestate has been used in order
     // to set and get values from the jsx
-    const [name, setname] = useState('');
-    const [age, setage] = useState('');
+    const [city, setcity] = useState('');
+    const [area, setarea] = useState('');
     const [id, setid] = useState('');
+    const [Manager, setManager] = useState('');
   
     // Used for navigation with logic in javascript
     let history = useNavigate()
@@ -34,8 +35,8 @@ function Edit() {
         // Putting the value from the input 
         // textfield and replacing it from 
         // existing for updation
-        a.Name = name
-        a.Age = age
+        a.City= city
+        a.Area = area
    // Redirecting to main page
    history('/')
 }
@@ -44,9 +45,11 @@ function Edit() {
 // Useeffect take care that page will
 // be rendered only once
 useEffect(() => {
-    setname(localStorage.getItem('Name'))
-    setage(localStorage.getItem('Age'))
+    setcity(localStorage.getItem('city'))
+    setarea(localStorage.getItem('area'))
     setid(localStorage.getItem('id'))
+    setManager(localStorage.getItem('Manager'))
+  
 }, [])
 
 return (
