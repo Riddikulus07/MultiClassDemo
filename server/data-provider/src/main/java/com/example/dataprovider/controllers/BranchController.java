@@ -4,9 +4,11 @@ package com.example.dataprovider.controllers;
 import com.example.dataprovider.exceptions.ResourceNotFoundException;
 import com.example.dataprovider.models.Branch;
 import com.example.dataprovider.repositories.BranchRepository;
+import com.example.dataprovider.requests.DataRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,4 +48,27 @@ public class BranchController {
         }
         return branch.get();
     }
+
+    @PostMapping("/id")
+    private List<Branch> getBranchesById(@RequestBody DataRequest dataRequest){
+        List<Branch> ret = new ArrayList<Branch>();
+        Optional<Branch> branch = branchRepository.findById(Long.parseLong(dataRequest.getParameter()));
+        branch.ifPresent(ret::add);
+        return ret;
+    }
+    @PostMapping("/city")
+    private List<Branch> getBranchesByCity(@RequestBody DataRequest dataRequest){
+        return branchRepository.findByCity(dataRequest.getParameter());
+    }
+
+    @PostMapping("/area")
+    private List<Branch> getBranchesByArea(@RequestBody DataRequest dataRequest){
+        return branchRepository.findByArea(dataRequest.getParameter());
+    }
+
+    @PostMapping("/manager")
+    private List<Branch> getBranchesByManager(@RequestBody DataRequest dataRequest){
+        return branchRepository.findByManager(dataRequest.getParameter());
+    }
+
 }
