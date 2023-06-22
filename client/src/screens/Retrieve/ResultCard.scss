@@ -1,22 +1,32 @@
-.ResultCard{
+.ResultCardTotal{
     margin: 5px 10px;
     border-radius: 15px;
-    background-color: rgb(57, 57, 57);
     padding : 3px 10px;
-    color : white;
-    .id, .areancity, .numEmployees, .manager{
-        margin : 15px;
-    }
-    .id{
-        color : black;
-        background-color: white;
-        padding : 5px 15px;
+    .ResultCard{
+        margin: 5px 10px;
         border-radius: 15px;
+        background-color: rgb(57, 57, 57);
+        padding : 3px 10px;
+        color : white;
+        cursor: pointer;
+        .id, .areancity, .numEmployees, .manager{
+            margin : 15px;
+        }
+        .id{
+            color : black;
+            background-color: white;
+            padding : 5px 15px;
+            border-radius: 15px;
+        }
+        .numEmployees{
+            color : black;
+            background-color: white;
+            padding : 5px 15px;
+            border-radius: 15px;
+        }
     }
-    .numEmployees{
-        color : black;
-        background-color: white;
-        padding : 5px 15px;
-        border-radius: 15px;
+    .icons{
+        margin : 5px 15px;
+        cursor: pointer;
     }
 }

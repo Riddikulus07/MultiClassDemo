@@ -1,11 +1,12 @@
 import "./Delete.scss";
 import Header from "../../components/Header/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 
 const Delete = () => {
   const [id, setId] = useState("");
@@ -34,6 +35,13 @@ const Delete = () => {
       });
   };
 
+  const location = useLocation();
+  const data = location.state;
+
+  useEffect(()=>{
+    setId(data);
+  }, [data]);
+
   return (
     <div className="Delete">
       <Header
@@ -48,6 +56,7 @@ const Delete = () => {
           onChange={(e) => {
             setId(e.target.value);
           }}
+          defaultValue={data}
         />
         {waiting ? (
           <Spinner />

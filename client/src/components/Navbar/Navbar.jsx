@@ -11,8 +11,6 @@ const Navbar = ()=>{
         <div className="navbar-nav">
             <a className="nav-link" href="/create">Create</a>
             <a className="nav-link" href="/retrieve">Retrieve</a>
-            <a className="nav-link" href="/update">Update</a>
-            <a className="nav-link" href="delete">Delete</a>
         </div>
       </div>
     </div>
