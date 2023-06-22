@@ -85,7 +85,32 @@ return (
                     variant="primary" type="submit" size="lg">
                     update
                 </Button>
-
+ const handleNewBranch = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        "http://localhost:8100/data-provider/v1/branch",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(branch),
+        }
+      );
+      console.log(response);
+      if (response.status == 200) {
+        console.log("Object Edited successfully");
+        showSuccess();
+      } else {
+        console.log("Object Editing failed");
+        showFailure();
+      }
+    } catch (error) {
+      console.error("Error occurred while editing object:", error);
+      showFailure();
+    }
+  };
   
                 {/* Redirecting to main page after editing */}
                 <Link className="d-grid gap-2" to='/'>
