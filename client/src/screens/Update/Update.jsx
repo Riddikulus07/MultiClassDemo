@@ -1,36 +1,68 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Spinner } from "react-bootstrap";
+// import { useLocation } from "react-router-dom";
+
 // import navigationData from './navigationData.json';
-class BranchDetailsClient {
+class Branch {
+    id;
     city;
     area;
     numEmployees;
     manager;
-    BranchDetailsClient(branch) {
-      city = branch.city;
-      area = branch.area;
-      this.numEmployees = branch.numEmployees;
-      manager = branch.manager;
+    BranchDetailsClient()
+    {
+        this.id = null;
+        this.city = '',
+        this.area = '',
+        this.numEmployees = 0,
+        this.manager = ''
+    }
+    setCity(city)
+    {
+        this.city = city
+    }
+    setArea(area)
+    {
+        this.area = area;
+    }
+    setNumEmployes(num)
+    {
+        this.numEmployees = num;
+    }
+    setManager(manager)
+    {
+        this.manager = manager;
     }
   }
+
 function Update()
 {
     const [id,setId] = useState(0);
     const [getBranch,setGetBranch] = useState(false);
-    const handleIdchange = (event) =>
-    {
-        const {name , value} = event.target;
-        setId(Number(value));
-    }
-    const branchDetails = navigationData;
-    console.log(branchDetails);
-    var [branch, setBranch] = useState(new BranchDetailsClient(branchDetails));
+    const location = useLocation();
+    const newdata = location.state;
+    console.log(newdata);
+    
+    var [branch, setBranch] = useState(new Branch());
+    useEffect(()=>{
+        setBranch(newdata);
+      }, [newdata]);
+      
+    
+
     const handleBranchChange = (event) => {
         const { name, value } = event.target;
         setBranch((prev) => {
+           
           if (name === "BranchCity") {
             return {
+                id : prev.id,
               city: value,
               area: prev.area,
               numEmployees: prev.numEmployees,
@@ -38,6 +70,7 @@ function Update()
             };
           } else if (name === "BranchArea") {
             return {
+                id : prev.id,
               city: prev.city,
               area: value,
               numEmployees: prev.numEmployees,
@@ -45,6 +78,7 @@ function Update()
             };
           } else if (name === "BranchNumEmployees") {
             return {
+                id : prev.id,
               city: prev.city,
               area: prev.area,
               numEmployees: Number(value),
@@ -52,6 +86,7 @@ function Update()
             };
           } else if (name === "BranchManager") {
             return {
+                id : prev.id,
               city: prev.city,
               area: prev.area,
               numEmployees: prev.numEmployees,
@@ -63,44 +98,45 @@ function Update()
 
     const handleUpdateBranch = async (e) => 
     {
-        e.preventDefault();
-        try {
-            const url = string
-            const response = await fetch(
-            "http://localhost:8100/data-provider/v1/branch/" +id,
-            {
-                method: "PUT",
+        try{
+            let config = {
+                method: "put",
+                url: `http://localhost:8100/data-provider/v1/branch`,
                 headers: {
-                "Content-Type": "application/json",
+                  "Content-Type": "application/json",
                 },
-                body: JSON.stringify(branch),
-            }
-            );
-            console.log(response);
-            if (response.status == 200) {
-                idbranch = response.json;
-                console.log(idbranch);
-
-            // console.log("Object posted successfully");
-
-            response.text
-            showSuccess();
-            } else {
-            console.log("Object posting failed");
-            showFailure();
-            }
-        } catch (error) {
-            console.error("Error occurred while posting object:", error);
-            showFailure();
-        }
+                data: branch,
+              };
+        axios.request(config).then(response =>
+            {
+                console.log(response);
+            })
     }
-        
+    catch(err) {
+        console.log(err)
+    }
+    }
+    console.log(branch);   
      return (
         <div className="d-flex justify-content-center  ">
       <div className="card cardview text-center">
         <div className="card-body">
           <h3> Update the product </h3>
           <br></br>
+          <div className="input-group mb-3">
+            <label className="input-group-text" id="inputGroup-sizing-default">
+              Branch ID
+            </label>
+            <input
+              className="form-control"
+              type="number"
+              name="BranchId"
+              value={branch.id}
+              readOnly
+              required
+              
+            />
+          </div>
           <div className="input-group mb-3">
             <label className="input-group-text" id="inputGroup-sizing-default">
               Branch City
@@ -110,7 +146,6 @@ function Update()
               type="text"
               name="BranchCity"
               value={branch.city}
-              
               onChange={handleBranchChange}
               required
             />
@@ -167,11 +202,11 @@ function Update()
             onClick={handleUpdateBranch}
           >
             {" "}
-            Add new Branch{" "}
+                Update Branch{" "}
           </button>
         </div>
       </div>
-      <ToastContainer
+      {/* <ToastContainer
         position="bottom-right"
         autoClose={5000}
         hideProgressBar={false}
@@ -182,7 +217,7 @@ function Update()
         draggable
         pauseOnHover
         theme="dark"
-      />
+      /> */}
     </div>
     );
 }
