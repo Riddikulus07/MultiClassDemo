@@ -17,8 +17,6 @@ class BranchDetailsClient
     }
 }
 
-
-
 function Create()
 {
     var [branch,setBranch] = useState(new BranchDetailsClient());
@@ -54,7 +52,7 @@ function Create()
             return {
                 city : prev.city,
                 area : prev.area,
-                numemployees : value,
+                numemployees : Number(value),
                 manager : prev.manager
             }
         }
@@ -73,7 +71,7 @@ function Create()
             e.preventDefault();
             
             try {
-              const response = await fetch('http://localhost:8100/data-provider/v1/branch', {
+               const response = await fetch('http://localhost:8100/data-provider/v1/branch', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json',
