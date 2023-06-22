@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import array from './array';
 import { Link, useNavigate } from 'react-router-dom';
   
-function Home() {
+function Update2() {
   
     let history = useNavigate()
   
@@ -86,4 +86,4 @@ function Home() {
     )
 }
   
-export default Home
+export default Update2;

@@ -4,9 +4,9 @@ import { BrowserRouter as Router, Routes, Route}from 'react-router-dom'
 import Create from './screens/Create/create';
 import Retrieve from './screens/Retrieve/Retrieve'
 import Navbar from './components/Navbar/Navbar'
+// import Update from './screens/Update/Update';
 
 function App() {
-  // const [count, setCount] = useSate(0)
 
   return (
     <div className="App">
@@ -16,6 +16,7 @@ function App() {
           <Route path="/create" element={<Create/>} />
           <Route path='/' element={<Retrieve/>}/>
           <Route path='/retrieve' element={<Retrieve/>}/>
+          {/* <Route path = '/update' element = {<Update/>}/> */}
         </Routes>
       </Router>
     </div>
