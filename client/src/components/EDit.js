@@ -24,11 +24,11 @@ function Edit() {
   
     // Function for handling the edit and 
     // pushing changes of editing/updating
-    const handelSubmit = (e) => {
+    const handleSubmit = (e) => {
   
         // Preventing from reload
 
-        e.preventDEfault();
+        e.preventDefault();
       
   
         // Getting an index of an array
@@ -67,21 +67,21 @@ return (
                 controlId="formBasicEmail">
                 <Form.Control value={name}
                     onChange={e => setname(e.target.value)}
-                    type="text" placeholder="Enter your Name" />
+                    type="text" placeholder="Enter your Citye" />
             </Form.Group>
 
-            {/* setting a age from the input textfiled */}
+            
             <Form.Group className="mb-3" 
                 controlId="formBasicPassword">
                 <Form.Control value={age}
                     onChange={e => setage(e.target.value)}
-                    type="text" placeholder="Age" />
+                    type="text" placeholder="Area" />
             </Form.Group>
 
-            {/* Hadinling an onclick event 
+            {/* Handling an on click event 
                 running an edit logic */}
                                 <Button
-                    onClick={e => handelSubmit(e) 
+                    onClick={e => handleSubmit(e) 
                     variant="primary" type="submit" size="lg">
                     update
                 </Button>
@@ -112,7 +112,7 @@ return (
     }
   };
   
-                {/* Redirecting to main page after editing */}
+                {/* Redirecting to the main page after editing */}
                 <Link className="d-grid gap-2" to='/'>
                     <Button variant="warning" 
                         size="lg">
