@@ -12,7 +12,7 @@ class BranchDetailsClient
     {
         city = '';
         area ='';
-        this.numemployees = 0;
+        this.numEmployees = 0;
         manager = '';
     }
 }
@@ -34,7 +34,7 @@ function Create()
             return {
                 city : value,
                 area : prev.area,
-                numemployees : prev.numemployees,
+                numEmployees : prev.numemployees,
                 manager : prev.manager
             }
         }
@@ -43,7 +43,7 @@ function Create()
             return {
                 city : prev.city,
                 area : value,
-                numemployees : prev.numemployees,
+                numEmployees : prev.numemployees,
                 manager : prev.manager
             }
         }
@@ -52,7 +52,7 @@ function Create()
             return {
                 city : prev.city,
                 area : prev.area,
-                numemployees : Number(value),
+                numEmployees : Number(value),
                 manager : prev.manager
             }
         }
@@ -61,7 +61,7 @@ function Create()
             return {
                 city : prev.city,
                 area : prev.area,
-                numemployees : prev.numemployees,
+                numEmployees : prev.numemployees,
                 manager : value
             }
         }
