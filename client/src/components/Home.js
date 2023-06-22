@@ -8,8 +8,6 @@ function Home() {
   
     let history = useNavigate()
   
-    // You may skip this part if you're
-    // using react-context api or redux
     function setID(id, name, age) {
         localStorage.setItem('id', id);
         localStorage.setItem('city', city);
@@ -28,7 +26,7 @@ function Home() {
         array.splice(index, 1)
   
         // We need to re-render the page for getting 
-        // the results so redirect to same page.
+        // the results so redirect to the same page.
         history('/')
     }
   
@@ -45,9 +43,9 @@ function Home() {
                 </thead>
                 <tbody>
   
-                    {/* Mapping though every element 
+                    {/* Mapping through every element 
                         in the array and showing the 
-                        data in the form of table */}
+                        data in the form of a table */}
                     {array.map((item) => {
                         return (
                             <tr>
@@ -56,10 +54,10 @@ function Home() {
                                 <td>{item.id}</td>
                                 <td>{item.Manager}</td>
   
-                                {/* getting theid,city, area and 
+                                {/* getting their, city, area and 
                                     Manager for storing these
-                                    value in the jsx with 
-                                    onclick event */}
+                                    value in the JSX with 
+                                    on click event */}
                                 <td><Link to={`/edit`}>
                                     <Button onClick={(e) =>
                                     setID(item.id, item.city, item.area,item.Manager)} 
@@ -67,7 +65,7 @@ function Home() {
                                     Update</Button></Link>
                                 </td>
   
-                                {/* Using thr deleted function passing
+                                {/* Using the deleted function passing
                                     the id of an entry */}
                                 <td><Button onClick={e => deleted(item.id)}
                                     variant="danger">Delete</Button></td>
@@ -77,7 +75,7 @@ function Home() {
                 </tbody>
             </Table>
   
-            {/* Button for redirecting to create page for
+            {/* Button for redirecting to create a page for
                 insertion of values */}
             <Link className="d-grid gap-2" to='/create'>
                 <Button variant="warning" size="lg">Create</Button>
