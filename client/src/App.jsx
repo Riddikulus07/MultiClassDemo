@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Routes, Route}from 'react-router-dom'
 import Create from './screens/Create/create';
 import Retrieve from './screens/Retrieve/Retrieve'
 import Navbar from './components/Navbar/Navbar'
-// import Update from './screens/Update/Update';
+import Delete from './screens/Delete/Delete';
+import Update from './screens/Update/Update';
+
 
 function App() {
 
@@ -16,7 +18,8 @@ function App() {
           <Route path="/create" element={<Create/>} />
           <Route path='/' element={<Retrieve/>}/>
           <Route path='/retrieve' element={<Retrieve/>}/>
-          {/* <Route path = '/update' element = {<Update/>}/> */}
+          <Route path='/delete' element={<Delete/>}/>
+          <Route path = '/update' element = {<Update/>}/>
         </Routes>
       </Router>
     </div>
