@@ -3,6 +3,7 @@
         margin : 10px 20px;
         text-align: center;
     }
+    
     .options{
         .option, .option-active{
             border-radius: 15px;
@@ -17,6 +18,7 @@
             color : white;
         }
     }
+
     .searchoptions{
         .searchbar{
             flex : 1;
@@ -27,5 +29,4 @@
             }
         }
     }
-
 }
