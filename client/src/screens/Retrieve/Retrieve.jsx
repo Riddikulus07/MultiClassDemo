@@ -19,7 +19,7 @@ const Retrieve = () => {
       .then((response) => {
         setWaiting(false);
         console.log(response.data);
-        if (response.status === 200) {
+        if (response.status == 200) {
           setResults(response.data);
         } else {
           console.log("Fetching object failed");
@@ -67,7 +67,7 @@ const Retrieve = () => {
 
       <div className="options d-flex flex-row justify-content-evenly">
         <div
-          className={mode === "all" ? "option-active" : "option"}
+          className={mode == "all" ? "option-active" : "option"}
           onClick={() => {
             setMode("all");
             setResults([]);
@@ -76,7 +76,7 @@ const Retrieve = () => {
           Fetch all records
         </div>
         <div
-          className={mode === "search" ? "option-active" : "option"}
+          className={mode == "search" ? "option-active" : "option"}
           onClick={() => {
             setMode("search");
             setResults([]);
@@ -86,13 +86,13 @@ const Retrieve = () => {
         </div>
         <button
           className="btn btn-dark"
-          onClick={mode === "all" ? getAllRecords : getSomeRecords}
+          onClick={mode == "all" ? getAllRecords : getSomeRecords}
         >
           Search
         </button>
       </div>
 
-      {mode === "search" ? (
+      {mode == "search" ? (
         <div className="searchoptions d-flex flex-row justify-content-center align-items-center">
           <div className="dropdown">
             <button
@@ -103,10 +103,10 @@ const Retrieve = () => {
             >
               {attr}
             </button>
-            <ul className="dropdown-menu">
+            <ul class="dropdown-menu">
               <li>
                 <a
-                  className="dropdown-item"
+                  class="dropdown-item"
                   onClick={() => {
                     setAttr("id");
                   }}
@@ -116,7 +116,7 @@ const Retrieve = () => {
               </li>
               <li>
                 <a
-                  className="dropdown-item"
+                  class="dropdown-item"
                   onClick={() => {
                     setAttr("area");
                   }}
@@ -126,7 +126,7 @@ const Retrieve = () => {
               </li>
               <li>
                 <a
-                  className="dropdown-item"
+                  class="dropdown-item"
                   onClick={() => {
                     setAttr("city");
                   }}
@@ -136,7 +136,7 @@ const Retrieve = () => {
               </li>
               <li>
                 <a
-                  className="dropdown-item"
+                  class="dropdown-item"
                   onClick={() => {
                     setAttr("manager");
                   }}
@@ -153,9 +153,9 @@ const Retrieve = () => {
               onChange={(e) => {
                 setVal(e.target.value);
               }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  getSomeRecords();
+              onKeyDown={(e) =>{
+                if(e.key == "Enter"){
+                    getSomeRecords();
                 }
               }}
             />
@@ -188,4 +188,3 @@ const Retrieve = () => {
 };
 
 export default Retrieve;
-
