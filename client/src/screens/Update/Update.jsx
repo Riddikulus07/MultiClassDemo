@@ -102,7 +102,6 @@ function Update() {
         data: branch,
       };
       axios.request(config).then((response) => {
-        console.log(response);
         if(response.status  == 200){
           showSuccess();
         }else showFailure();
@@ -112,7 +111,6 @@ function Update() {
       showFailure();
     }
   };
-  console.log(branch);
   return (
     <div className="d-flex justify-content-center  ">
       <div className="card cardview text-center">

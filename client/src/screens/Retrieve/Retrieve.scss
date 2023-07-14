@@ -1,8 +1,5 @@
 // Retrieve.scss
 .Retrieve {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;   add this .retreive might work
     .resultDisplay {
       margin: 10px 20px;
       text-align: center;
@@ -14,6 +11,7 @@
         border-radius: 15px;
         padding: 7px 15px;
         cursor: pointer;
+        max-width: 30vw;
       }
       
       .option {

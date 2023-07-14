@@ -7,29 +7,7 @@ import { Spinner } from "react-bootstrap";
 
 const Retrieve = () => {
   const [mode, setMode] = useState("all");
-  const [results, setResults] = useState([
-    {
-      "id" : 1,
-      "city" : "SomeCity",
-      "area" : "SomeArea",
-      "manager" : "Man-a ger",
-      "numEmployees" : 89
-    },
-    {
-      "id" : 1,
-      "city" : "SomeCity",
-      "area" : "SomeArea",
-      "manager" : "Man-a ger",
-      "numEmployees" : 89
-    },
-    {
-      "id" : 1,
-      "city" : "SomeCity",
-      "area" : "SomeArea",
-      "manager" : "Man-a ger",
-      "numEmployees" : 89
-    }
-  ]);
+  const [results, setResults] = useState([]);
   const [attr, setAttr] = useState("id");
   const [val, setVal] = useState("");
   const [waiting, setWaiting] = useState(false);
@@ -40,7 +18,6 @@ const Retrieve = () => {
       .get("http://localhost:8100/data-provider/v1/branch")
       .then((response) => {
         setWaiting(false);
-        console.log(response.data);
         if (response.status == 200) {
           setResults(response.data);
         } else {
@@ -76,7 +53,6 @@ const Retrieve = () => {
       })
       .catch((error) => {
         setWaiting(false);
-        console.log(error);
       });
   };
 
@@ -84,7 +60,7 @@ const Retrieve = () => {
     <div className="Retrieve">
       <Header
         title="Retrieve"
-        description="Fetch all records, or look for them based on certain attributes"
+        description="Read all records, or look for them based on certain attributes"
       />
 
       <div className="options d-flex flex-row justify-content-evenly">
@@ -125,10 +101,10 @@ const Retrieve = () => {
             >
               {attr}
             </button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
               <li>
                 <a
-                  class="dropdown-item"
+                  className="dropdown-item"
                   onClick={() => {
                     setAttr("id");
                   }}
@@ -138,7 +114,7 @@ const Retrieve = () => {
               </li>
               <li>
                 <a
-                  class="dropdown-item"
+                  className="dropdown-item"
                   onClick={() => {
                     setAttr("area");
                   }}
@@ -148,7 +124,7 @@ const Retrieve = () => {
               </li>
               <li>
                 <a
-                  class="dropdown-item"
+                  className="dropdown-item"
                   onClick={() => {
                     setAttr("city");
                   }}
@@ -158,7 +134,7 @@ const Retrieve = () => {
               </li>
               <li>
                 <a
-                  class="dropdown-item"
+                  className="dropdown-item"
                   onClick={() => {
                     setAttr("manager");
                   }}
@@ -187,14 +163,14 @@ const Retrieve = () => {
 
       <div className="resultDisplay m-3">
         {waiting ? (
-          <Spinner />
+          <Spinner data-testid = "spinner"/>
         ) : results.length ? (
           <table className="table">
             <thead>
               <tr>
                 <th scope="col">Id</th>
-                <th scope="col">area</th>
                 <th scope="col">city</th>
+                <th scope="col">area</th>
                 <th scope="col">employees</th>
                 <th scope="col">manager</th>
                 <th scope="col">options</th>

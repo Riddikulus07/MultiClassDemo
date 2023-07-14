@@ -20,6 +20,7 @@ class BranchDetailsClient {
 
 function Create() {
   var [branch, setBranch] = useState(new BranchDetailsClient());
+  const [waiting, setWaiting] = useState(false)
 
   const showSuccess = () =>
     toast.success(`Successfully created branch.`);
@@ -64,6 +65,7 @@ function Create() {
   const handleNewBranch = async (e) => {
     e.preventDefault();
     try {
+      setWaiting(true)
       const response = await fetch(
         "http://localhost:8100/data-provider/v1/branch",
         {
@@ -74,7 +76,7 @@ function Create() {
           body: JSON.stringify(branch),
         }
       );
-      console.log(response);
+      setWaiting(false)
       if (response.status == 200) {
         console.log("Object posted successfully");
         showSuccess();
@@ -102,7 +104,6 @@ function Create() {
               className="form-control"
               type="text"
               name="BranchCity"
-              value={branch.city}
               placeholder="Branch city"
               onChange={handleBranchChange}
               required
@@ -117,7 +118,6 @@ function Create() {
               className="form-control"
               type="text"
               name="BranchArea"
-              value={branch.area}
               placeholder="Branch Area"
               onChange={handleBranchChange}
               required
@@ -130,9 +130,8 @@ function Create() {
             </label>
             <input
               className="form-control"
-              type="number"
+              type="text"
               name="BranchNumEmployees"
-              value={branch.numEmployees}
               placeholder="0"
               onChange={handleBranchChange}
               required
@@ -147,14 +146,16 @@ function Create() {
               className="form-control"
               type="text"
               name="BranchManager"
-              value={branch.manager}
               placeholder="Mr.Rana"
               onChange={handleBranchChange}
               required
             />
           </div>
           <br />
-          <button
+          { 
+            waiting ? 
+            <Spinner data-testid = "spinner"/> :
+            <button
             className="btn btn-primary btn-dark"
             type="submit"
             onClick={handleNewBranch}
@@ -162,6 +163,7 @@ function Create() {
             {" "}
             Add new Branch{" "}
           </button>
+          }
         </div>
       </div>
       <ToastContainer
