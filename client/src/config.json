@@ -1,0 +1,34 @@
+{
+  "entities": [
+        {
+            "name" : "person",
+            "altName" : "Person",
+            "attributes" : [
+                {"name" : "id", "type" : "integer"},
+                {"name" : "name", "type" : "string"},
+                {"name" : "family", "type" : "string"},
+                {"name" : "age", "type" : "integer"}
+            ],
+            "defaultValue" : {
+                "name" : "",
+                "family" : "",
+                "age" : ""
+            }
+        },
+        {
+            "name" : "cat",
+            "altName" : "Cat",
+            "attributes" : [
+                {"name" : "id", "type" : "integer"},
+                {"name" : "name", "type" : "string"},
+                {"name" : "breed", "type" : "string"},
+                {"name" : "age", "type" : "integer"}
+            ],
+            "defaultValue" : {
+                "name" : "",
+                "breed" : "",
+                "age" : ""
+            }
+        }
+    ]
+}

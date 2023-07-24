@@ -1,12 +1,7 @@
-import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route}from 'react-router-dom'
-
-import Create from './screens/Create/create';
-import Retrieve from './screens/Retrieve/Retrieve'
 import Navbar from './components/Navbar/Navbar'
-import Delete from './screens/Delete/Delete';
-import Update from './screens/Update/Update';
-
+import Dash from './screens/Dash/Dash';
+import config from './config.json'
 
 function App() {
 
@@ -15,11 +10,13 @@ function App() {
       <Router>
         <Navbar/>
         <Routes>
-          <Route path="/create" element={<Create/>} />
-          <Route path='/' element={<Retrieve/>}/>
-          <Route path='/retrieve' element={<Retrieve/>}/>
-          <Route path='/delete' element={<Delete/>}/>
-          <Route path = '/update' element = {<Update/>}/>
+          {config.entities.map((e)=>{
+            return <Route path={`/${e.name}`} element={
+            <Dash 
+              resource = {e}
+            />
+          } key = {`/${e.name}`}/>
+          })}          
         </Routes>
       </Router>
     </div>
